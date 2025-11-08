@@ -1,0 +1,30 @@
+<aside id="sidebar-multi-level-sidebar"
+  class="md:w-64 w-20 h-screen transition-transform transition-all"
+  aria-label="Sidebar">
+
+  <div class="h-full px-4 py-6 overflow-y-auto bg-gradient-to-b from-[#fff0f5] via-[#ffe4f0] to-[#fce4ec] shadow-md">
+    <mat-nav-list>
+      @for(item of menuItem(); track item.label) {
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="active-link"
+          class="flex items-center gap-4 p-4 my-3 text-lg font-semibold text-[#5e2750] bg-white/70 hover:bg-[#f8bbd0] rounded-xl transition-all duration-300 shadow-sm hover:shadow-lg transform hover:scale-105"
+        >
+          <mat-icon
+            matListItemIcon
+            class="shrink-0 w-6 h-6 text-[#9c27b0] transition duration-300 group-hover:text-[#7b1fa2]"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            {{ item.icon }}
+          </mat-icon>
+          <span class="md:block hidden flex-1 ms-3 whitespace-nowrap font-medium">
+            {{ item.label }}
+          </span>
+        </a>
+      }
+    </mat-nav-list>
+  </div>
+</aside>

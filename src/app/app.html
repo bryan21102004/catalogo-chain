@@ -1,0 +1,62 @@
+
+
+<div class="flex flex-col h-screen">
+  <app-header class="h-16 shrink-0"></app-header>
+
+  <div class="flex flex-1 overflow-hidden">
+  
+    <app-side-nav class="hidden md:block w-64 shrink-0"></app-side-nav>
+
+    <main class="flex-1 overflow-auto bg-[#FFF7F3] p-4 md:p-6">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+
+<div class="md:hidden fixed top-3 right-4 z-50">
+  <button
+    (click)="toggleMenu()"
+    class="bg-[#FFBFA9] text-white px-4 py-2 rounded-full shadow-md hover:bg-[#FF9D7C] transition flex items-center gap-2"
+    aria-label="Abrir menú"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+    <span class="text-sm font-medium">Menú</span>
+  </button>
+</div>
+
+<div
+  *ngIf="mostrarMenu"
+  class="fixed inset-0 bg-[#00000040] backdrop-blur-sm flex flex-col items-end p-5 z-40"
+  (click)="toggleMenu()"
+>
+  <div
+    class="flex flex-col space-y-3 bg-white/70 backdrop-blur-xl rounded-2xl p-4 shadow-xl mt-10 w-[170px]"
+    (click)="$event.stopPropagation()"
+  >
+    <button 
+      (click)="irA('home')" 
+      class="bg-white hover:bg-[#FFBFA9]/20 flex items-center gap-3 p-3 rounded-xl shadow transition"
+    >
+      <i class="fa-solid fa-house text-[#4A1D1D] text-xl"></i>
+      <span class="text-[#4A1D1D] font-medium text-sm">Inicio</span>
+    </button>
+
+    <button 
+      (click)="irA('catalogo')" 
+      class="bg-white hover:bg-[#FFBFA9]/20 flex items-center gap-3 p-3 rounded-xl shadow transition"
+    >
+      <i class="fa-solid fa-bag-shopping text-[#4A1D1D] text-xl"></i>
+      <span class="text-[#4A1D1D] font-medium text-sm">Catálogo</span>
+    </button>
+
+    <button 
+      (click)="irA('contacto')" 
+      class="bg-white hover:bg-[#FFBFA9]/20 flex items-center gap-3 p-3 rounded-xl shadow transition"
+    >
+      <i class="fa-solid fa-user text-[#4A1D1D] text-xl"></i>
+      <span class="text-[#4A1D1D] font-medium text-sm">Contacto</span>
+    </button>
+  </div>
+</div>

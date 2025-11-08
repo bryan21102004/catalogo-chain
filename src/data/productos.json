@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "nombre": "Bata estilo floreada",
+    "categoria": "Moda",
+    "precio": 12000,
+    "imagen": "img/bata.jpg",
+    "descripcion": "Bata de tela ligera con diseño floral, perfecta para el verano."
+  },
+  {
+    "id": 2,
+    "nombre": "Bateria Inalambrica",
+    "categoria": "Electronica",
+    "precio": 10000,
+    "imagen": "img/bt.jpg",
+    "descripcion": "Batería inalámbrica portátil con alta capacidad y carga rápida."
+  },
+  {
+    "id": 3,
+    "nombre": "Anillo",
+    "categoria": "Accesorios",
+    "precio": 4000,
+    "imagen": "img/Anillo.jpg",
+    "descripcion": "Anillo de plata con diseño elegante y moderno."
+  },
+  {
+    "id": 4,
+    "nombre": "Bolso",
+    "categoria": "Moda",
+    "precio": 5000,
+    "imagen": "img/bolso.jpg",
+    "descripcion": "Bolso de cuero sintético con múltiples compartimentos."
+  },
+  {
+    "id": 5,
+    "nombre": "Set de pulseras",
+    "categoria": "Accesorios",
+    "precio": 3000,
+    "imagen": "img/setp.jpg",
+    "descripcion": "Set de pulseras coloridas hechas a mano."
+  },
+   {
+    "id": 6,
+    "nombre": "Set de acero",
+    "categoria": "Accesorios",
+    "precio": 5500,
+    "imagen": "img/setA.jpg",
+    "descripcion": "Set de acero inoxidable para cocina, incluye cuchillos y utensilios."
+  }
+]
