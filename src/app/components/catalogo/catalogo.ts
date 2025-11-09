@@ -2,7 +2,6 @@ import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { ProductoCard } from '../producto-card/producto-card';
 import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../enviroments/enviroments';
 
 @Component({
   selector: 'app-catalogo',
@@ -20,15 +19,20 @@ export class Catalogo implements OnInit{
   constructor(private http: HttpClient) {}
 
 
+  ngOnInit() {
+    this.http.get('/api/1Blwb7em7sjWZ3bT1UXH2ZGlTxtSBaeGic7AJYDl0I6M/productos')
+      .subscribe({
+        next: (data: any) => {
+          console.log(' Datos cargados desde Sheets:', data);
+          this.productos = data;
+        },
+        error: (err) => {
+          console.error(' Error al cargar productos:', err);
+        }
+      });
+  }
 
 
-ngOnInit() {
-  const url = `${environment.apiUrl}/1Blwb7em7sjW73bT1UXHZGlTxtSBaeGic7AJYDl0I6M/productos`;
-  this.http.get(url).subscribe({
-    next: (data: any) => this.productos = data,
-    error: (err) => console.error('Error al cargar productos:', err)
-  });
-}
 
   get productosFiltrados() {
     if (!this.productos || this.productos.length === 0) return [];
