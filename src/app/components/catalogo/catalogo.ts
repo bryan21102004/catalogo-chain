@@ -19,19 +19,30 @@ export class Catalogo implements OnInit{
   constructor(private http: HttpClient) {}
 
 
-  ngOnInit() {
- 
-    this.http.get('https://opensheet.elk.sh/1Blwb7em7sjW73bT1UXHZGlTxtSBaeGic7AJYDl0I6M/productos')
 
-      .subscribe({
-        next: (data: any) => {
-          console.log(' Datos cargados desde Sheets:', data);
+
+
+
+ ngOnInit() {
+    const hojaURL =
+      'https://opensheet.elk.sh/1Blwb7em7sjWZ3bT1UXH2ZGlTxtSBaeGic7AJYDl0I6M/productos';
+    const proxy =
+      'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(hojaURL);
+
+    this.http.get(proxy).subscribe({
+      next: (data: any) => {
+        try {
+          // Codetabs devuelve JSON directo (sin "contents")
+          console.log('✅ Productos cargados:', data);
           this.productos = data;
-        },
-        error: (err) => {
-          console.error(' Error al cargar productos:', err);
+        } catch (e) {
+          console.error('⚠️ Error al procesar datos:', e, data);
         }
-      });
+      },
+      error: (err) => {
+        console.error('❌ Error al cargar productos:', err);
+      },
+    });
   }
 
 
