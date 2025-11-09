@@ -20,27 +20,16 @@ export class Catalogo implements OnInit{
 
 
   ngOnInit() {
-   // Detectar si está corriendo en local o en producción
-  const isLocal = window.location.hostname === 'localhost';
-
-  // Seleccionar base URL dependiendo del entorno
-  const baseUrl = isLocal
-    ? '/api'
-    : 'https://opensheet.elk.sh';
-
-  // URL completa a tu hoja y pestaña
-  const sheetUrl = `${baseUrl}/1Blwb7em7sjWZ3bT1UXHZGlTxtSBaeGic7AJYDl0I6M/productos`;
-
-  // Llamar a la API
-  this.http.get(sheetUrl).subscribe({
-    next: (data: any) => {
-      console.log('✅ Datos cargados desde Sheets:', data);
-      this.productos = data;
-    },
-    error: (err) => {
-      console.error('❌ Error al cargar productos:', err);
-    }
-  });
+    this.http.get('/api/1Blwb7em7sjWZ3bT1UXH2ZGlTxtSBaeGic7AJYDl0I6M/productos')
+      .subscribe({
+        next: (data: any) => {
+          console.log(' Datos cargados desde Sheets:', data);
+          this.productos = data;
+        },
+        error: (err) => {
+          console.error(' Error al cargar productos:', err);
+        }
+      });
   }
 
 
