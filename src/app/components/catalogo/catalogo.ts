@@ -14,12 +14,28 @@ export class Catalogo implements OnInit{
   productos: any[] = [];
   categoriaSeleccionada: string = 'Todos';
   productoSeleccionado: any = null;
-  
+  productosPorPagina = 3;
+paginaActual = 1;
+
+get totalPaginas() {
+  return Math.ceil(this.productosFiltrados.length / this.productosPorPagina);
+}
+
+get productosPaginados() {
+  const inicio = (this.paginaActual - 1) * this.productosPorPagina;
+  const fin = inicio + this.productosPorPagina;
+  return this.productosFiltrados.slice(inicio, fin);
+}
+
+cambiarPagina(pagina: number) {
+  if (pagina >= 1 && pagina <= this.totalPaginas) {
+    this.paginaActual = pagina;
+    window.scrollTo({ top: 0, behavior: 'smooth' }); 
+  }
+}
+
 
   constructor(private http: HttpClient) {}
-
-
-
 
 
 

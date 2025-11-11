@@ -54,6 +54,15 @@
     >
       Accesorios
     </button>
+
+
+      <button
+      (click)="cambiarCategoria('Temporada navideña')"
+      class="px-5 py-2 sm:px-6 sm:py-2.5 rounded-full font-medium border border-[#FFBFA9] text-[#3B2F2F] hover:bg-[#FFD5BE] hover:text-[#2E2E2E] transition"
+      [class.bg-[#FFBFA9]]="categoriaSeleccionada === 'Temporada navideña'"
+    >
+      Temporada navideña
+    </button>
   </div>
 
 <div *ngIf="productos.length === 0" class="flex flex-col items-center justify-center h-64 text-[#3B2F2F] animate-pulse">
@@ -63,16 +72,40 @@
   </svg>
   <p class="text-lg font-medium">Cargando productos...</p>
 </div>
-  <div
-    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl w-full"
-    *ngIf="productosFiltrados.length > 0; else sinProductos"
-  >
-    <app-producto-card
-      *ngFor="let prod of productosFiltrados"
-      [producto]="prod"
-      (vermas)="abrirModal(prod)"
-    ></app-producto-card>
-  </div>
+
+<div class="productos">
+  
+
+  <app-producto-card
+  *ngFor="let p of productosPaginados"
+  [producto]="p"
+  (vermas)="abrirModal(p)">
+</app-producto-card>
+
+</div>
+
+<div class="paginacion" *ngIf="totalPaginas > 1">
+  <!-- Anterior -->
+  <button class="page page--arrow"
+          (click)="cambiarPagina(paginaActual - 1)"
+          [disabled]="paginaActual === 1"
+          aria-label="Anterior">‹</button>
+
+  <!-- Números -->
+  <button *ngFor="let _ of [].constructor(totalPaginas); let idx = index"
+          class="page"
+          [class.page--active]="paginaActual === idx + 1"
+          (click)="cambiarPagina(idx + 1)">
+    {{ idx + 1 }}
+  </button>
+
+  <!-- Siguiente -->
+  <button class="page page--arrow"
+          (click)="cambiarPagina(paginaActual + 1)"
+          [disabled]="paginaActual === totalPaginas"
+          aria-label="Siguiente">›</button>
+</div>
+
 
 
   <ng-template #sinProductos>

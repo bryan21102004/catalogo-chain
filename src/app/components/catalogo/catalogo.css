@@ -14,3 +14,247 @@
   animation: modalIn 0.25s ease-out;
 }
 
+.paginacion {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+}
+
+.paginacion button {
+  background-color: #ffe0d1;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: 600;
+  color: #8b2d3a;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.paginacion button:hover {
+  background-color: #ffbba3;
+}
+
+.paginacion button.activo {
+  background-color: #ff8a65;
+  color: white;
+}
+
+.paginacion button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+  justify-items: center;
+  align-items: stretch;
+  margin: 30px auto;
+  max-width: 1200px;
+}
+app-producto-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+app-producto-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+.catalogo-contenedor {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  padding: 30px;
+  margin: 30px auto;
+  max-width: 1200px;
+}
+.categoria-boton {
+  border: 2px solid #ffbca0;
+  border-radius: 50px;
+  padding: 10px 20px;
+  font-weight: 600;
+  color: #8b2d3a;
+  background-color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.categoria-boton:hover,
+.categoria-boton.activo {
+  background-color: #ff8a65;
+  color: white;
+  border-color: #ff8a65;
+}
+
+/* === Catálogo general === */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  justify-items: center;
+  align-items: stretch;
+  margin: 20px auto;
+  padding: 0 10px;
+  max-width: 1200px;
+}
+
+/* === Tarjetas === */
+app-producto-card {
+  width: 100%;
+  max-width: 320px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+app-producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* === Botón "Ver más" === */
+.vermas-btn {
+  display: inline-block;
+  background-color: #ff8a65;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 25px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.vermas-btn:hover {
+  background-color: #ff7043;
+}
+
+/* === Modal === */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+}
+
+.modal-contenido {
+  background-color: #fff;
+  border-radius: 15px;
+  max-width: 90%;
+  width: 400px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-contenido img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+/* === Botones dentro del modal === */
+.modal-contenido button {
+  margin: 10px 5px;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.modal-contenido button:first-child {
+  background-color: #25d366; /* WhatsApp */
+  color: white;
+}
+
+.modal-contenido button:last-child {
+  background-color: #ff8a65;
+  color: white;
+}
+
+.paginacion{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:28px 0;
+}
+
+/* reset básico para que no hereden estilos distintos */
+.paginacion button{
+  appearance:none;
+  -webkit-appearance:none;
+  outline:none;
+}
+
+/* todos los botones con la misma “píldora circular” */
+.page{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:1.5px solid #ffbca0;
+  background:#fff;
+  color:#8b2d3a;
+  font-weight:700;
+  font-size:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:background .2s,border-color .2s,color .2s,transform .1s;
+}
+
+.page:hover{ background:#ffede5; }
+
+
+/* 🔥 Página activa */
+.page--active {
+  background-color: #ff8a65;
+  border-color: #ff8a65;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* flechas usan exactamente el mismo círculo */
+.page--arrow{ font-size:22px; line-height:1; }
+
+.page:disabled{
+  opacity:.45;
+  pointer-events:none;
+}
+
+
+/* === Adaptación móvil === */
+@media (max-width: 768px) {
+  .productos {
+    grid-template-columns: 1fr; /* ✅ una tarjeta por fila */
+  }
+
+  .vermas-btn {
+    width: 80%;
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .modal-contenido {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .modal-contenido img {
+    border-radius: 10px;
+  }
+}
+
+
+
+
+
