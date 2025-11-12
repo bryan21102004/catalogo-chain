@@ -72,6 +72,8 @@
         "test": {
           "builder": "@angular/build:karma",
           "options": {
+             "outputPath": "dist/catalogo-chain",
+            "browser": "src/main.ts",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
