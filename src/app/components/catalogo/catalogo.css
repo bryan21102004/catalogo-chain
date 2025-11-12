@@ -328,6 +328,31 @@ app-producto-card:hover {
   transform: scale(1.05);
   box-shadow: 0 0 10px rgba(255, 157, 124, 0.5);
 }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out;
+}
+.material-icons-outlined {
+  font-size: 22px;
+  vertical-align: middle;
+  transition: transform 0.2s ease;
+}
+
+button:hover .material-icons-outlined {
+  transform: translateX(-3px);
+}
+
+
 
 
 

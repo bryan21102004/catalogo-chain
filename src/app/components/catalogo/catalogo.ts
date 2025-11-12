@@ -1,12 +1,12 @@
 import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { ProductoCard } from '../producto-card/producto-card';
-import { NgIf, NgFor, CurrencyPipe } from '@angular/common';
+import { NgIf, NgFor, CurrencyPipe,NgClass } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-catalogo',
   standalone: true,
-  imports: [ProductoCard, NgIf, NgFor, CurrencyPipe],
+  imports: [ProductoCard, NgIf, NgFor, CurrencyPipe,NgClass],
   templateUrl: './catalogo.html',
   styleUrls: ['./catalogo.css'], 
 })
@@ -16,6 +16,7 @@ export class Catalogo implements OnInit{
   productoSeleccionado: any = null;
   productosPorPagina = 5;
 paginaActual = 1;
+cargando = false;
 
 get totalPaginas() {
   return Math.ceil(this.productosFiltrados.length / this.productosPorPagina);
@@ -29,21 +30,18 @@ get productosPaginados() {
 
 
 
-
-
 cambiarPagina(pagina: number) {
   if (pagina >= 1 && pagina <= this.totalPaginas) {
-    this.paginaActual = pagina;
+    this.cargando = true;
 
-   
     setTimeout(() => {
-      const main = document.querySelector('main'); 
-      if (main) {
-        main.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }, 100);
+      this.paginaActual = pagina;
+      this.cargando = false;
+
+      const main = document.querySelector('main');
+      if (main) main.scrollTo({ top: 0, behavior: 'smooth' });
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 300);
   }
 }
 
