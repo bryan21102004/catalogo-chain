@@ -20,50 +20,17 @@
 
 
 
- 
-  <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10">
- 
-    <button
-      (click)="cambiarCategoria('Todos')"
-      class="px-5 py-2 sm:px-6 sm:py-2.5 rounded-full font-medium border border-[#FFBFA9] text-[#3B2F2F] hover:bg-[#FFD5BE] hover:text-[#2E2E2E] transition"
-      [class.bg-[#FFBFA9]]="categoriaSeleccionada === 'Todos'"
-    >
-      Todos
-    </button>
+<div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-10">
+  <button
+    *ngFor="let cat of ['Todos', 'Moda', 'Electronica', 'Accesorios', 'Temporada navideña']"
+    (click)="cambiarCategoria(cat)"
+    [class.activo]="categoriaSeleccionada === cat"
+    class="categoria-btn"
+  >
+    {{ cat }}
+  </button>
+</div>
 
-    <button
-      (click)="cambiarCategoria('Moda')"
-      class="px-5 py-2 sm:px-6 sm:py-2.5 rounded-full font-medium border border-[#FFBFA9] text-[#3B2F2F] hover:bg-[#FFD5BE] hover:text-[#2E2E2E] transition"
-      [class.bg-[#FFBFA9]]="categoriaSeleccionada === 'Moda'"
-    >
-      Moda
-    </button>
-
-    <button
-      (click)="cambiarCategoria('Electronica')"
-      class="px-5 py-2 sm:px-6 sm:py-2.5 rounded-full font-medium border border-[#FFBFA9] text-[#3B2F2F] hover:bg-[#FFD5BE] hover:text-[#2E2E2E] transition"
-      [class.bg-[#FFBFA9]]="categoriaSeleccionada === 'Electronica'"
-    >
-      Electrónica
-    </button>
-
-    <button
-      (click)="cambiarCategoria('Accesorios')"
-      class="px-5 py-2 sm:px-6 sm:py-2.5 rounded-full font-medium border border-[#FFBFA9] text-[#3B2F2F] hover:bg-[#FFD5BE] hover:text-[#2E2E2E] transition"
-      [class.bg-[#FFBFA9]]="categoriaSeleccionada === 'Accesorios'"
-    >
-      Accesorios
-    </button>
-
-
-      <button
-      (click)="cambiarCategoria('Temporada navideña')"
-      class="px-5 py-2 sm:px-6 sm:py-2.5 rounded-full font-medium border border-[#FFBFA9] text-[#3B2F2F] hover:bg-[#FFD5BE] hover:text-[#2E2E2E] transition"
-      [class.bg-[#FFBFA9]]="categoriaSeleccionada === 'Temporada navideña'"
-    >
-      Temporada navideña
-    </button>
-  </div>
 
 <div *ngIf="productos.length === 0" class="flex flex-col items-center justify-center h-64 text-[#3B2F2F] animate-pulse">
   <svg class="animate-spin w-10 h-10 mb-3 text-[#FFBFA9]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -76,35 +43,47 @@
 <div class="productos">
   
 
-  <app-producto-card
-  *ngFor="let p of productosPaginados"
-  [producto]="p"
-  (vermas)="abrirModal(p)">
-</app-producto-card>
+
+
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 animar-productos">
+  <app-producto-card *ngFor="let p of productosPaginados" [producto]="p" (vermas)="abrirModal(p)"  ></app-producto-card>
+</div>
 
 </div>
 
-<div class="paginacion" *ngIf="totalPaginas > 1">
-  <!-- Anterior -->
-  <button class="page page--arrow"
-          (click)="cambiarPagina(paginaActual - 1)"
-          [disabled]="paginaActual === 1"
-          aria-label="Anterior">‹</button>
-
-  <!-- Números -->
-  <button *ngFor="let _ of [].constructor(totalPaginas); let idx = index"
-          class="page"
-          [class.page--active]="paginaActual === idx + 1"
-          (click)="cambiarPagina(idx + 1)">
-    {{ idx + 1 }}
+<div class="flex justify-center items-center gap-3 mt-8 select-none">
+  <!-- Botón anterior -->
+  <button
+    (click)="cambiarPagina(paginaActual - 1)"
+    [disabled]="paginaActual === 1"
+    class="boton-pagina"
+  >
+    ‹
   </button>
 
-  <!-- Siguiente -->
-  <button class="page page--arrow"
-          (click)="cambiarPagina(paginaActual + 1)"
-          [disabled]="paginaActual === totalPaginas"
-          aria-label="Siguiente">›</button>
+  <!-- Indicadores (puntitos animados) -->
+  <div class="flex gap-2">
+    <div
+      *ngFor="let p of [].constructor(totalPaginas); let i = index"
+      (click)="cambiarPagina(i + 1)"
+      [class]="
+        'punto transition-all duration-300 ' +
+        (paginaActual === i + 1 ? 'activo' : '')
+      "
+    ></div>
+  </div>
+
+  <!-- Botón siguiente -->
+  <button
+    (click)="cambiarPagina(paginaActual + 1)"
+    [disabled]="paginaActual === totalPaginas"
+    class="boton-pagina"
+  >
+    ›
+  </button>
 </div>
+
 
 
 

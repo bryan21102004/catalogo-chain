@@ -16,13 +16,16 @@
 <div class="md:hidden fixed top-3 right-4 z-50">
   <button
     (click)="toggleMenu()"
-    class="bg-[#FFBFA9] text-white px-4 py-2 rounded-full shadow-md hover:bg-[#FF9D7C] transition flex items-center gap-2"
+    class="menu-movil flex items-center gap-2 px-4 py-2 rounded-full shadow-md transition-all duration-300"
+    [class.abierto]="mostrarMenu"
     aria-label="Abrir menú"
   >
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-    </svg>
-    <span class="text-sm font-medium">Menú</span>
+    <div class="icono">
+      <span class="linea"></span>
+      <span class="linea"></span>
+      <span class="linea"></span>
+    </div>
+    <span class="text-sm font-semibold text-black">Menú</span>
   </button>
 </div>
 

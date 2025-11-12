@@ -113,24 +113,46 @@ app-producto-card:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
-
-.vermas-btn {
-  display: inline-block;
-  background-color: #ff8a65;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 10px 25px;
-  font-weight: 600;
-  font-size: 15px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-.vermas-btn:hover {
-  background-color: #ff7043;
+/* 🎨 Botones de categorías */
+.categoria-btn {
+  padding: 0.6rem 1.4rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  border: 1.5px solid #ffbfa9;
+  background-color: white;
+  color: #3b2f2f;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 8px rgba(255, 191, 169, 0.15);
 }
 
-/* === Modal === */
+.categoria-btn:hover {
+  background-color: #ffd5be;
+  transform: translateY(-2px);
+}
+
+/* 🟠 Estado activo */
+.categoria-btn.activo {
+  background-color: #ffbfa9;
+  color: #2e2e2e;
+  box-shadow: 0 4px 12px rgba(255, 159, 121, 0.3);
+  border-color: #ff9d7c;
+  transform: translateY(-1px);
+}
+
+
+
+  .categoria-btn:hover {
+    background-color: #3a3a3a;
+  }
+
+  .categoria-btn.activo {
+    background-color: #ff8c66;
+    color: white;
+    box-shadow: 0 4px 10px rgba(255, 120, 80, 0.4);
+  }
+
+
+
 .modal {
   position: fixed;
   inset: 0;
@@ -179,57 +201,7 @@ app-producto-card:hover {
   color: white;
 }
 
-.paginacion{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:12px;
-  flex-wrap:wrap;
-  margin:28px 0;
-}
 
-
-.paginacion button{
-  appearance:none;
-  -webkit-appearance:none;
-  outline:none;
-}
-
-
-.page{
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  border:1.5px solid #ffbca0;
-  background:#fff;
-  color:#8b2d3a;
-  font-weight:700;
-  font-size:16px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  transition:background .2s,border-color .2s,color .2s,transform .1s;
-}
-
-.page:hover{ background:#ffede5; }
-
-
-
-.page--active {
-  background-color: #ff8a65;
-  border-color: #ff8a65;
-  color: white;
-  transform: scale(1.05);
-}
-
-
-.page--arrow{ font-size:22px; line-height:1; }
-
-.page:disabled{
-  opacity:.45;
-  pointer-events:none;
-}
 
 @media (max-width: 768px) {
   .productos {
@@ -251,6 +223,116 @@ app-producto-card:hover {
     border-radius: 10px;
   }
 }
+
+
+.boton-pagina {
+  background-color: #ffbfa9;
+  color: #000;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 0.3rem 0.9rem;
+  border-radius: 9999px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.boton-pagina:hover:not(:disabled) {
+  background-color: #ff9d7c;
+  transform: scale(1.1);
+}
+
+.boton-pagina:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+
+.punto {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background-color: #ffd9c9;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.punto:hover {
+  transform: scale(1.2);
+  background-color: #ffbfa9;
+}
+
+.punto.activo {
+  background-color: #ff9d7c;
+  transform: scale(1.4);
+  box-shadow: 0 0 8px rgba(255, 140, 100, 0.6);
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .boton-pagina {
+    background-color: #ff8c66;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(255, 140, 100, 0.3);
+  }
+
+  .boton-pagina:hover:not(:disabled) {
+    background-color: #ff6f42;
+  }
+
+  .punto {
+    background-color: #444;
+  }
+
+  .punto:hover {
+    background-color: #ff8c66;
+  }
+
+  .punto.activo {
+    background-color: #ff6f42;
+    box-shadow: 0 0 8px rgba(255, 120, 80, 0.8);
+  }
+}
+
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@keyframes fadeSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animar-productos {
+  animation: fadeSlide 0.4s ease-in-out;
+}
+
+.btn-vermas {
+  background-color: #ffbfa9;
+  color: #4a1d1d;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.6rem 1.4rem;
+  transition: all 0.25s ease;
+}
+
+.btn-vermas:hover {
+  background-color: #ff9d7c;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 157, 124, 0.5);
+}
+
+
+
+
+
 
 
 

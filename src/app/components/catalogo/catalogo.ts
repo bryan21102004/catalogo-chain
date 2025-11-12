@@ -14,7 +14,7 @@ export class Catalogo implements OnInit{
   productos: any[] = [];
   categoriaSeleccionada: string = 'Todos';
   productoSeleccionado: any = null;
-  productosPorPagina = 3;
+  productosPorPagina = 5;
 paginaActual = 1;
 
 get totalPaginas() {
@@ -27,12 +27,26 @@ get productosPaginados() {
   return this.productosFiltrados.slice(inicio, fin);
 }
 
+
+
+
+
 cambiarPagina(pagina: number) {
   if (pagina >= 1 && pagina <= this.totalPaginas) {
     this.paginaActual = pagina;
-    window.scrollTo({ top: 0, behavior: 'smooth' }); 
+
+   
+    setTimeout(() => {
+      const main = document.querySelector('main'); 
+      if (main) {
+        main.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }, 100);
   }
 }
+
   constructor(private http: HttpClient) {}
 
  ngOnInit() {
