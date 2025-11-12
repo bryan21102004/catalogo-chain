@@ -89,7 +89,7 @@ app-producto-card:hover {
   border-color: #ff8a65;
 }
 
-/* === Catálogo general === */
+
 .productos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -101,7 +101,7 @@ app-producto-card:hover {
   max-width: 1200px;
 }
 
-/* === Tarjetas === */
+
 app-producto-card {
   width: 100%;
   max-width: 320px;
@@ -113,7 +113,7 @@ app-producto-card:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* === Botón "Ver más" === */
+
 .vermas-btn {
   display: inline-block;
   background-color: #ff8a65;
@@ -158,7 +158,7 @@ app-producto-card:hover {
   margin-bottom: 15px;
 }
 
-/* === Botones dentro del modal === */
+
 .modal-contenido button {
   margin: 10px 5px;
   border: none;
@@ -170,7 +170,7 @@ app-producto-card:hover {
 }
 
 .modal-contenido button:first-child {
-  background-color: #25d366; /* WhatsApp */
+  background-color: #25d366; 
   color: white;
 }
 
@@ -188,14 +188,14 @@ app-producto-card:hover {
   margin:28px 0;
 }
 
-/* reset básico para que no hereden estilos distintos */
+
 .paginacion button{
   appearance:none;
   -webkit-appearance:none;
   outline:none;
 }
 
-/* todos los botones con la misma “píldora circular” */
+
 .page{
   width:44px;
   height:44px;
@@ -215,7 +215,7 @@ app-producto-card:hover {
 .page:hover{ background:#ffede5; }
 
 
-/* 🔥 Página activa */
+
 .page--active {
   background-color: #ff8a65;
   border-color: #ff8a65;
@@ -223,7 +223,7 @@ app-producto-card:hover {
   transform: scale(1.05);
 }
 
-/* flechas usan exactamente el mismo círculo */
+
 .page--arrow{ font-size:22px; line-height:1; }
 
 .page:disabled{
@@ -231,11 +231,9 @@ app-producto-card:hover {
   pointer-events:none;
 }
 
-
-/* === Adaptación móvil === */
 @media (max-width: 768px) {
   .productos {
-    grid-template-columns: 1fr; /* ✅ una tarjeta por fila */
+    grid-template-columns: 1fr; 
   }
 
   .vermas-btn {

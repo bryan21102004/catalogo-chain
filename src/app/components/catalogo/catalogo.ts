@@ -33,11 +33,7 @@ cambiarPagina(pagina: number) {
     window.scrollTo({ top: 0, behavior: 'smooth' }); 
   }
 }
-
-
   constructor(private http: HttpClient) {}
-
-
 
  ngOnInit() {
     const hojaURL =
@@ -48,15 +44,16 @@ cambiarPagina(pagina: number) {
     this.http.get(proxy).subscribe({
       next: (data: any) => {
         try {
-          // Codetabs devuelve JSON directo (sin "contents")
-          console.log('✅ Productos cargados:', data);
+        
+          console.log(' Productos cargados:', data);
           this.productos = data;
+          this.paginaActual = 1; 
         } catch (e) {
-          console.error('⚠️ Error al procesar datos:', e, data);
+          console.error(' Error al procesar datos:', e, data);
         }
       },
       error: (err) => {
-        console.error('❌ Error al cargar productos:', err);
+        console.error(' Error al cargar productos:', err);
       },
     });
   }
@@ -73,15 +70,16 @@ cambiarPagina(pagina: number) {
     );
   }
 
-  cambiarCategoria(categoria: string) {
-    this.categoriaSeleccionada = categoria;
-  }
+ 
 
-  OnInit() {
-    const guardado = localStorage.getItem('categoria');
-    if(guardado) this.categoriaSeleccionada = guardado;
-    this.productosFiltrados;
-  }
+  cambiarCategoria(categoria: string) {
+  this.categoriaSeleccionada = categoria;
+  this.paginaActual = 1;
+  window.scrollTo({ top: 0, behavior: 'smooth' }); 
+}
+
+
+ 
 
   abrirModal(producto: any) {
     this.productoSeleccionado = producto;
